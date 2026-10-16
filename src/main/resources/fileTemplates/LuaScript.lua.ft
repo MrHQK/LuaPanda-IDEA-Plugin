@@ -1,0 +1,8 @@
+-- ${NAME} Module
+-- Created on ${DATE}
+
+local M = {}
+
+
+
+return M

@@ -1,0 +1,41 @@
+.gradle/
+.intellijPlatform/
+build/
+out/
+.idea/
+*.iml
+*.ipr
+*.iws
+local.properties
+*.zip
+
+# Signing credentials — never commit these
+*.pem
+chain.crt
+*.jks
+*.keystore
+
+# 演示工程 .idea：只保留预置的运行配置（clone 下来即可直接演示），
+# 其余（Copilot 聊天历史、modules.xml 等）不提交
+!examples/LuaPandaDemo/.idea/
+examples/LuaPandaDemo/.idea/*
+!examples/LuaPandaDemo/.idea/runConfigurations/
+!examples/LuaPandaDemo/.idea/runConfigurations/*.xml
+
+# 内部协作 / AI 工具状态、内部文档 —— 不随公开仓库发布
+/.codebuddy/
+/.ai/
+/.workbuddy/
+/docs/Marketplace上架指南.md
+/docs/内宣文章-LuaPanda-IDEA-Plugin.md
+
+# 演示录制自动化脚本：依赖本机 python 与 video/ 录制产物，不发布
+/examples/LuaPandaDemo/demo.bat
+/examples/LuaPandaDemo/demo[1-8].bat
+/examples/LuaPandaDemo/run_recording.bat
+
+# 本地草稿 / 演示录制产物 —— 不属于插件源码，不要提交
+/tmp/
+/examples/LuaPandaDemo/video/
+*.pptx
+*.bmp

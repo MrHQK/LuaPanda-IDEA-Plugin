@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="LuaPanda Demo (Server)" type="LuaPandaDebugConfiguration" factoryName="LuaPandaDebugConfigurationFactory" host="127.0.0.1" port="8818" connectionMode="SERVER" autoReconnect="true" stopOnEntry="false" luaPandaScriptPath="" useCHook="true" clibPath="" handshakeFallbackMs="3000">
+    <method v="2" />
+  </configuration>
+</component>

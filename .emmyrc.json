@@ -1,0 +1,13 @@
+{
+  "runtime": {
+    "version": "Lua5.4",
+    "requirePattern": ["?.lua", "?/init.lua"]
+  },
+  "diagnostics": {
+    "globals": ["GAME", "DEMO_CONFIG", "LuaPanda", "arg"],
+    "disable": ["unresolved-require", "undefined-field"]
+  },
+  "workspace": {
+    "ignoreGlobs": ["**/LuaPanda.lua", "tmp/**"]
+  }
+}

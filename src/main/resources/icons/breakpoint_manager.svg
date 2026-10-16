@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 13 13">
+  <!-- Breakpoint circle -->
+  <circle cx="6.5" cy="6.5" r="5" fill="#DB5860" stroke="#C13E47" stroke-width="0.8"/>
+  <!-- List lines inside -->
+  <line x1="4" y1="4.5" x2="9" y2="4.5" stroke="white" stroke-width="1" stroke-linecap="round"/>
+  <line x1="4" y1="6.5" x2="9" y2="6.5" stroke="white" stroke-width="1" stroke-linecap="round"/>
+  <line x1="4" y1="8.5" x2="9" y2="8.5" stroke="white" stroke-width="1" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,23 @@
+# Normalize line endings so the repo behaves the same on Windows / macOS / Linux.
+# Default: store as LF in the repository.
+* text=auto eol=lf
+
+# Windows-only scripts must keep CRLF, otherwise cmd.exe may mis-parse them.
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Gradle wrapper: the shell script REQUIRES LF (CRLF breaks it on Linux/macOS),
+# while the .bat wrapper must keep CRLF (covered by the glob above).
+gradlew text eol=lf
+
+# Binary artefacts — never let Git touch these.
+*.dll binary
+*.exe binary
+*.so binary
+*.dylib binary
+*.jar binary
+*.png binary
+*.jpg binary
+*.bmp binary
+*.mp4 binary
+*.zip binary

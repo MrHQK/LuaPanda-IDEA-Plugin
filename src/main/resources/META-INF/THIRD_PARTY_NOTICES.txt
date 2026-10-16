@@ -1,0 +1,59 @@
+Third-Party Notices
+===================
+
+LuaPanda IDEA Plugin bundles the third-party components listed below. They are
+covered by their own licenses, reproduced in full at the end of this file.
+This notice is shipped inside the plugin distribution.
+
+-------------------------------------------------------------------------------
+1) LuaPanda.lua  —  Lua-side debugger script
+-------------------------------------------------------------------------------
+   Upstream  : https://github.com/Tencent/LuaPanda
+   License   : BSD 3-Clause
+   Copyright : (C) 2019 THL A29 Limited, a Tencent company. All rights reserved.
+   Location  : debugger/LuaPanda.lua
+
+   This script is distributed with the plugin and is also copied into user
+   projects by the menu action Tools -> "Copy LuaPanda.lua to Project".
+   Its original copyright and license header is retained at the top of the file.
+
+-------------------------------------------------------------------------------
+2) libpdebug  —  C hook library
+-------------------------------------------------------------------------------
+   Upstream  : https://github.com/Tencent/LuaPanda (same project)
+   License   : BSD 3-Clause, as distributed with the upstream project
+   Location  : debugger/debugger_lib/plugins/<os>/<arch>/<lua-version>/libpdebug.*
+
+   The prebuilt binaries carry no embedded license header; this attribution
+   follows the license of the upstream project they are distributed with.
+
+-------------------------------------------------------------------------------
+BSD 3-Clause License (full text)
+-------------------------------------------------------------------------------
+
+Copyright (c) 2019 THL A29 Limited, a Tencent company. All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice, this
+   list of conditions and the following disclaimer.
+
+2. Redistributions in binary form must reproduce the above copyright notice,
+   this list of conditions and the following disclaimer in the documentation
+   and/or other materials provided with the distribution.
+
+3. Neither the name of the copyright holder nor the names of its contributors
+   may be used to endorse or promote products derived from this software
+   without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.

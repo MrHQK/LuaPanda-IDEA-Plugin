@@ -14,6 +14,7 @@
   - `com.intellij.xdebugger.impl.XSourcePositionImpl.create()` → `XDebuggerUtil.getInstance().createPosition()`
   - `com.intellij.xdebugger.impl.breakpoints.XExpressionImpl.fromText()` → 新增 `LuaXExpression`（基于公开的 `XExpression` 接口实现）
   - `XDebugSessionImpl.sessionTab.watchesView` 没有公开替代（平台不提供编程式添加 Watch 的 API），改为反射解析；解析失败时自动降级为把表达式复制到剪贴板
+- **修复「Lua Breakpoints」工具窗口始终显示「没有要显示的内容」**：`LuaBreakpointManagerPanel` 的 `countLabel` 字段声明在 `init` 块之后，而 Kotlin 按声明顺序执行属性初始化，导致 `setupFilterBar()` 运行时该字段仍为 `null`，`JPanel.add(null)` 抛 NPE，面板构造失败、工具窗口因此没有内容。已将字段声明移到 `init` 块之前。
 
 ---
 

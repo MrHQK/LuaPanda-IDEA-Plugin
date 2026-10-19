@@ -67,6 +67,18 @@ class LuaBreakpointManagerPanel(private val project: Project) : JPanel(BorderLay
     /** Type filter combo box */
     private val typeCombo = ComboBox<String>()
 
+    /**
+     * Breakpoint count label shown at the right of the filter bar.
+     *
+     * NOTE: must be declared *before* the init block below — Kotlin runs property
+     * initialisers in declaration order, and setupFilterBar() adds this label to the
+     * panel. Declaring it later left it null at that point and threw an NPE, which
+     * silently prevented the whole tool window from being created.
+     */
+    private val countLabel = JLabel("").apply {
+        foreground = JBColor.GRAY
+    }
+
     init {
         setupFilterBar()
         setupTable()
@@ -115,10 +127,6 @@ class LuaBreakpointManagerPanel(private val project: Project) : JPanel(BorderLay
         filterPanel.add(countLabel)
 
         add(filterPanel, BorderLayout.SOUTH)
-    }
-
-    private val countLabel = JLabel("").apply {
-        foreground = JBColor.GRAY
     }
 
     private fun updateCountLabel() {

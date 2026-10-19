@@ -14,8 +14,8 @@ import com.intellij.xdebugger.XDebuggerManager
 import com.intellij.xdebugger.breakpoints.XBreakpoint
 import com.intellij.xdebugger.breakpoints.XBreakpointListener
 import com.intellij.xdebugger.breakpoints.XLineBreakpoint
-import com.intellij.xdebugger.impl.breakpoints.XExpressionImpl
 import com.luapanda.idea.LuaPandaIcons
+import com.luapanda.idea.debugger.LuaXExpression
 import java.awt.BorderLayout
 import java.awt.Component
 import java.awt.FlowLayout
@@ -467,7 +467,7 @@ class LuaBreakpointManagerPanel(private val project: Project) : JPanel(BorderLay
         if (newCondition.isBlank()) {
             bp.conditionExpression = null
         } else {
-            bp.conditionExpression = XExpressionImpl.fromText(newCondition)
+            bp.conditionExpression = LuaXExpression(newCondition)
         }
         breakpointTableModel.fireTableRowsUpdated(row, row)
     }
@@ -500,7 +500,7 @@ class LuaBreakpointManagerPanel(private val project: Project) : JPanel(BorderLay
         if (newLog.isBlank()) {
             bp.logExpressionObject = null
         } else {
-            bp.logExpressionObject = XExpressionImpl.fromText(newLog)
+            bp.logExpressionObject = LuaXExpression(newLog)
         }
         breakpointTableModel.fireTableRowsUpdated(row, row)
     }

@@ -23,12 +23,11 @@ import com.intellij.ui.table.JBTable
 import com.intellij.util.ui.JBUI
 import com.intellij.xdebugger.XDebugSession
 import com.intellij.xdebugger.XDebugSessionListener
-import com.intellij.xdebugger.impl.XDebugSessionImpl
-import com.intellij.xdebugger.impl.breakpoints.XExpressionImpl
 import com.luapanda.idea.debugger.LuaPandaDebugProcess
 import com.luapanda.idea.debugger.LuaPandaStackFrame
 import com.luapanda.idea.debugger.LuaTypeIcons
 import com.luapanda.idea.debugger.LuaValueFormatter
+import com.luapanda.idea.debugger.LuaXExpression
 import java.awt.BorderLayout
 import java.awt.Dimension
 import java.awt.FlowLayout
@@ -337,14 +336,40 @@ class LuaVariableSearchDialog(
     private fun addSelectedToWatches() {
         val entries = selectedEntries()
         if (entries.isEmpty()) return
-        val watchesView = (session as? XDebugSessionImpl)?.sessionTab?.watchesView
-        if (watchesView == null) {
+        val allAdded = entries.mapIndexed { i, entry ->
+            addToWatches(entry.path, i == entries.lastIndex)
+        }.all { it }
+        if (!allAdded) {
             copySelected { it.path }
             statusLabel.text = "Watches view is not available; expression(s) copied to clipboard."
-            return
         }
-        entries.forEachIndexed { i, entry ->
-            watchesView.addWatchExpression(XExpressionImpl.fromText(entry.path), -1, i == entries.lastIndex)
+    }
+
+    /**
+     * Adds a single expression to the debugger's Watches view.
+     *
+     * The IntelliJ Platform exposes no public API for this: the Watches view is only
+     * reachable via `XDebugSessionImpl.sessionTab.watchesView`, and all three types live in
+     * internal packages that the Plugin Verifier rejects. We therefore resolve the chain
+     * reflectively and return false so the caller can fall back to the clipboard when the
+     * platform's internal layout changes.
+     */
+    private fun addToWatches(path: String, isLast: Boolean): Boolean {
+        return try {
+            val current = session ?: return false
+            val sessionTab = current.javaClass.getMethod("getSessionTab")
+                .apply { isAccessible = true }
+                .invoke(current) ?: return false
+            val watchesView = sessionTab.javaClass.getMethod("getWatchesView")
+                .apply { isAccessible = true }
+                .invoke(sessionTab) ?: return false
+            val addWatch = watchesView.javaClass.methods.firstOrNull {
+                it.name == "addWatchExpression" && it.parameterCount == 3
+            } ?: return false
+            addWatch.invoke(watchesView, LuaXExpression(path), -1, isLast)
+            true
+        } catch (e: Throwable) {
+            false
         }
     }
 

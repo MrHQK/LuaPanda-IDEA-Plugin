@@ -7,6 +7,7 @@ import com.intellij.openapi.util.TextRange
 import com.intellij.openapi.vfs.LocalFileSystem
 import com.intellij.ui.ColoredTextContainer
 import com.intellij.ui.SimpleTextAttributes
+import com.intellij.xdebugger.XDebuggerUtil
 import com.intellij.xdebugger.XSourcePosition
 import com.intellij.xdebugger.evaluation.ExpressionInfo
 import com.intellij.xdebugger.evaluation.XDebuggerEvaluator
@@ -14,7 +15,6 @@ import com.intellij.xdebugger.frame.*
 import com.intellij.xdebugger.frame.presentation.XNumericValuePresentation
 import com.intellij.xdebugger.frame.presentation.XStringValuePresentation
 import com.intellij.xdebugger.frame.presentation.XValuePresentation
-import com.intellij.xdebugger.impl.XSourcePositionImpl
 import com.luapanda.idea.LuaPandaIcons
 import com.luapanda.idea.protocol.PathResolver
 import com.luapanda.idea.protocol.StackFrameInfo
@@ -98,7 +98,7 @@ class LuaPandaStackFrame(
             return null
         }
         // LuaPanda uses 1-based lines, IntelliJ uses 0-based
-        val pos = XSourcePositionImpl.create(vFile, frameInfo.line - 1)
+        val pos = XDebuggerUtil.getInstance().createPosition(vFile, frameInfo.line - 1)
         if (logger.isDebugEnabled) {
             logger.debug("resolveSourcePosition: ${frameInfo.file} -> ${vFile.path}, line ${frameInfo.line} -> position=$pos")
         }

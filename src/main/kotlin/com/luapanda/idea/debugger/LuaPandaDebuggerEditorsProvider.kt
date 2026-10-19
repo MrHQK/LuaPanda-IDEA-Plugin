@@ -1,6 +1,7 @@
 package com.luapanda.idea.debugger
 
 import com.intellij.openapi.editor.Document
+import com.intellij.openapi.editor.EditorFactory
 import com.intellij.openapi.fileTypes.FileType
 import com.intellij.openapi.fileTypes.PlainTextFileType
 import com.intellij.openapi.project.Project
@@ -26,6 +27,8 @@ class LuaPandaDebuggerEditorsProvider : XDebuggerEditorsProvider() {
         sourcePosition: XSourcePosition?,
         mode: EvaluationMode
     ): Document {
-        return com.intellij.openapi.editor.impl.DocumentImpl(expression.expression)
+        // Public API. (DocumentImpl lives in com.intellij.openapi.editor.impl and is
+        // internal — the Plugin Verifier rejects plugins that reference it.)
+        return EditorFactory.getInstance().createDocument(expression.expression)
     }
 }

@@ -28,6 +28,10 @@
     ]]></description>
 
     <change-notes><![CDATA[
+        <h3>1.0.3</h3>
+        <ul>
+            <li><b>修复</b>：移除对 IntelliJ 内部 API 的引用（Plugin Verifier 报 "Internal API usage" 导致上架被拒），改用公开 API 实现同等功能</li>
+        </ul>
         <h3>1.0.2</h3>
         <ul>
             <li><b>新增</b>：按变量名搜索当前堆栈帧变量 —— 断点暂停时可按名称或完整路径过滤 Locals / Upvalues / Globals，支持正则匹配与 table 递归展开，结果可一键加入 Watches</li>

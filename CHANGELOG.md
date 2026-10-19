@@ -6,6 +6,17 @@
 
 ---
 
+## [1.0.3] - 2026-10-19
+
+### 修复
+- **移除对 IntelliJ 内部 API 的引用**：Marketplace 的 Plugin Verifier 报 `Internal API usage` 并拒绝上架。以下内部类全部替换为公开 API：
+  - `com.intellij.openapi.editor.impl.DocumentImpl` → `EditorFactory.getInstance().createDocument()`
+  - `com.intellij.xdebugger.impl.XSourcePositionImpl.create()` → `XDebuggerUtil.getInstance().createPosition()`
+  - `com.intellij.xdebugger.impl.breakpoints.XExpressionImpl.fromText()` → 新增 `LuaXExpression`（基于公开的 `XExpression` 接口实现）
+  - `XDebugSessionImpl.sessionTab.watchesView` 没有公开替代（平台不提供编程式添加 Watch 的 API），改为反射解析；解析失败时自动降级为把表达式复制到剪贴板
+
+---
+
 ## [1.0.2] - 2026-10-15
 
 ### 新增

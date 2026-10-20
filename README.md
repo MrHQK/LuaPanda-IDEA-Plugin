@@ -4,7 +4,7 @@ IntelliJ IDEA 平台的 Lua 调试插件，移植自腾讯开源的 [LuaPanda](h
 
 **专注调试功能，与 [EmmyLua](https://plugins.jetbrains.com/plugin/9768-emmylua) 协同工作** — 本插件提供完整的调试能力，EmmyLua 提供语法高亮、代码补全等语言支持。两个插件可同时安装，互不冲突。
 
-> 📖 **[完整使用文档 →](docs/UserGuide.md)** ｜ 📋 **[更新日志 →](CHANGELOG.md)** ｜ 🎬 **[演示工程 →](examples/LuaPandaDemo/README.md)**
+> 🛒 **[JetBrains Marketplace →](https://plugins.jetbrains.com/plugin/35183-luapanda)** ｜ 📖 **[完整使用文档 →](docs/UserGuide.md)** ｜ 📋 **[更新日志 →](CHANGELOG.md)** ｜ 🎬 **[演示工程 →](examples/LuaPandaDemo/README.md)**
 
 ---
 
@@ -46,14 +46,22 @@ IntelliJ IDEA 平台的 Lua 调试插件，移植自腾讯开源的 [LuaPanda](h
 
 ## 安装
 
-### 方式一：从 ZIP 文件安装
+### 方式一：从 Marketplace 安装（推荐）
 
-1. 从 Releases 页面下载 `LuaPanda-IDEA-Plugin-<version>.zip`
+1. 打开 IntelliJ IDEA → **Settings → Plugins → Marketplace**
+2. 搜索 **LuaPanda**
+3. 点 **Install**，重启 IDE
+
+> 插件主页：<https://plugins.jetbrains.com/plugin/35183-luapanda>
+
+### 方式二：从 ZIP 文件安装（离线 / 内网环境）
+
+1. 从 [Releases](https://github.com/MrHQK/LuaPanda-IDEA-Plugin/releases) 下载 `LuaPanda-IDEA-Plugin-<version>-signed.zip`
 2. 打开 IntelliJ IDEA → **Settings → Plugins → ⚙️ → Install Plugin from Disk...**
 3. 选择下载的 ZIP 文件，点击 OK
 4. 重启 IDE
 
-### 方式二：推荐同时安装 EmmyLua
+### 方式三：推荐同时安装 EmmyLua
 
 本插件仅提供调试功能。为获得完整 Lua 开发体验（语法高亮、代码补全、跳转定义等），**强烈建议同时安装 EmmyLua**：
 
